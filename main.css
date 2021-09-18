@@ -1,0 +1,133 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: #3C99DC;
+    color: white;
+    font-weight: 100;
+}
+.navbar h4{
+    font-weight: 300;
+    font-size: 35px;
+}
+.search{
+    display: flex;
+    align-items: center;
+}
+#search-button{
+    width: 30px;
+    height: 30px;
+    background-color: #D5F3FE;
+    border: none;
+    margin: -4px;
+    border-radius: 5px;
+}
+.search input{
+    width: 350px;
+    height: 30px;
+    margin: -4px;
+    padding: -4px;
+    border: none;
+    background-color: #D5F3FE;
+    border-radius: 5px;
+    text-align: center;
+}
+#search-button img{
+    width: 100%;
+}
+#search-button:hover{
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0.1rem 1rem 0 rgba(195, 209, 216, 0.5);
+    transform: translateY(-0.01rem);
+    transition: transform 100ms;
+}
+.icon{
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.icon img{
+    width: 25px;
+    height: 25px;
+}
+.icon figcaption{
+    font-size: 12.5px;
+    text-align: center;
+}
+.navbar a:hover{
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0.1rem 1rem 0 rgba(195, 209, 216, 0.5);
+    transform: translateY(-0.01rem);
+    transition: transform 100ms;
+}
+.header{
+    margin: 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2565AE;
+}
+.header select{
+    background-color: white;
+    border: none;
+    width: 100px;
+    height: 30px;
+    background-color: Transparent; 
+}
+#Add-task{
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.new-task p{
+    margin: 0%;
+    font-size: 17px;
+}
+.new-task{
+    display: flex;
+    align-items: center;
+}
+#Add-task{
+    font-size: 30px;
+    color: #2565AE;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#Add-task:hover{
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0.1rem 1rem 0 rgba(195, 209, 216, 0.5);
+    transform: translateY(-0.01rem);
+    transition: transform 100ms;
+}
+#Task-input{
+    color: #2565AE;
+    border: none;
+    padding: 5px;
+    font-weight: 300;
+}
+input:focus{
+        outline: none !important;
+        border-color: #719ECE;
+        box-shadow: 0 0 10px #719ECE;
+}
+.linea {
+    border-bottom: 0.5px solid gray;
+    margin-left: 3%;
+    margin-right: 3%;
+  }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://img.icons8.com/nolan/64/to-do.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="main.css">
+    <title>ToDo App</title>
+</head>
+<body>
+    <nav class="navbar">
+        <h4>To Do</h4>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <button id="search-button"><img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-search-logistic-delivery-kiranshastry-gradient-kiranshastry.png"/></button>
+        </div>
+        <figure class="icon">
+            <a href=""><img src="https://img.icons8.com/ios/50/000000/login-rounded-right--v1.png" alt="Login"/></a>
+            <figcaption>Log In</figcaption>
+        </figure>
+    </nav>
+    <header class="header">
+        <h1>Tasks</h1>
+        <select class="select">
+            <option selected>Order</option>
+            <option value="1">Completed Tasks</option>
+            <option value="2">Uncompleted Tasks</option>
+            <option value="3">All</option>
+          </select>
+    </header>
+    <section class=Tasks>
+        <div class="new-task linea">
+        <button id="Add-task">+</button>
+        <input type="text" placeholder="   Add new task" id="Task-input">
+        </div>
+    </section>
+    <script src="app.js"></script>
+</body>
+</html>
