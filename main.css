@@ -131,3 +131,31 @@ input:focus{
     margin-left: 3%;
     margin-right: 3%;
   }
+.linea p{
+    margin: 0%;
+    font-size: 17px;
+}
+  .line{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1%;
+  }
+  .checkbox{
+      width: 20px;
+      height: 20px;
+  }
+  .button{
+      width: 100px;
+      height: 30px;
+      background-color: transparent;
+      border-color: red;
+      border-radius: 10px;
+  }
+  .button:hover{
+    cursor: pointer;
+    box-shadow: 0 0.1rem 1rem 0 rgba(195, 209, 216, 0.5);
+    transform: translateY(-0.01rem);
+    transition: transform 100ms;
+    background-color: #e57373 ;
+  }
