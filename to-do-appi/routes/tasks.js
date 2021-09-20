@@ -4,10 +4,10 @@ const {
     createTask,
     obtenerTask,
     eliminarTask
-} = require('../controllers/Users')
+} = require('../controllers/Tasks')
 
-router.get('/', createTask)
-router.post('/', obtenerTask)
+router.get('/', obtenerTask)
+router.post('/', createTask)
 router.delete('/', eliminarTask)
 
 module.exports = router;

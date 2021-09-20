@@ -4,6 +4,6 @@ router.get('/', (req, res)=>{
   res.send('welcome to adoptapet api');
 });
 router.use('/users', require('./users'));
-router.use('/users', require('./tasks'));
+router.use('/tasks', require('./tasks'));
 
 module.exports = router;
