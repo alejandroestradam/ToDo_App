@@ -5,6 +5,20 @@ var express = require('express'),
 // Objeto global de la app
 var app = express();
 
+/*********************** Mongoose Configuration *******************************/
+const mongoose = require("mongoose");
+
+mongoose.connect(
+    "mongodb+srv://alejandro11:alexander1@clusterbedu.k34fe.mongodb.net/test"
+);
+
+mongoose.set("debug", true);
+
+require("./models/User");
+// Aquí se importarán los modelos Mascota y Solicitud cuando estén listos
+
+/*********************** Mongoose Configuration *******************************/
+
 // configuración de middlewares
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));

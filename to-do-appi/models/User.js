@@ -11,19 +11,75 @@
   
   module.exports = Usuario;*/
   // Usuario.js
-const mongoose = require('mongoose');            //Importando mongoose.
+// Usuario.js
+// Usuario.js
+// Usuario.js
 
-const UsuarioSchema = new mongoose.Schema({      //Definiendo el objeto UsuarioSchema con el constructor Schema.
- username: String,                              //Definiendo cada campo con su respectivo tipo de dato.
- nombre: String,
- apellido: String, 
- email: String,
- password: String,
- ubicacion: String,
- telefono: String,
- bio: String,
- foto: String,
- tipo: String,
-}, { timestamps: true });                    
+// usando plugin de validación para que no se repitan correos ni usernames
+UsuarioSchema.plugin(uniqueValidator, { message: "Ya existe" });
 
-mongoose.model("Usuario", UsuarioSchema);        //Define el modelo Usuario, utilizando el esquema UsuarioSchema.
+UsuarioSchema.methods.crearPassword = function (password) {
+  this.salt = crypto.randomBytes(16).toString("hex"); // generando una "sal" random para cada usuario
+  this.hash = crypto
+    .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
+    .toString("hex"); // generando un hash utilizando la sal
+};
+
+/**
+ * Recibe el password, genera y compara el has con el de la base de datos
+ */
+UsuarioSchema.methods.validarPassword = function (password) {
+  const hash = crypto
+    .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
+    .toString("hex");
+  return this.hash === hash;
+};
+
+UsuarioSchema.methods.generarJWT = function() {
+  const today = new Date();
+  const exp = new Date(today);
+  exp.setDate(today.getDate() + 60); // 60 días antes de expirar
+
+  return jwt.sign({
+    id: this._id,
+    username: this.username,
+    exp: parseInt(exp.getTime() / 1000),
+  }, secret);
+};
+
+/**
+ * Devuelve la representación de un usuario después de autenticar
+ */
+UsuarioSchema.methods.toAuthJSON = function(){
+  return {
+    username: this.username,
+    email: this.email,
+    token: this.generarJWT()
+  };
+};
+
+/**
+* Devuelve la representación de un usuario, sólo datos públicos
+*/
+UsuarioSchema.methods.publicData = function(){
+  return {
+    id: this.id,
+    username: this.username,
+    email: this.email,
+    nombre: this.nombre,
+    apellido: this.apellido,
+    bio: this.bio,
+    foto: this.foto,
+    tipo: this.tipo,
+    ubicacion: this.ubicacion,
+    telefono: this.telefono,
+    createdAt: this.createdAt,
+    updatedAt: this.updatedAt
+  };
+};
+
+mongoose.model("Usuario", UsuarioSchema);
+
+
+
+
