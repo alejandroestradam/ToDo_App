@@ -10,11 +10,13 @@ const mongoose = require("mongoose");
 
 mongoose.connect(
     "mongodb+srv://alejandro11:alexander1@clusterbedu.k34fe.mongodb.net/test"
-);
+).then(()=> console.log("Base de datos conectada"));
 
 mongoose.set("debug", true);
 
 require("./models/User");
+require('./config/passport');
+require("./models/Task");
 // Aquí se importarán los modelos Mascota y Solicitud cuando estén listos
 
 /*********************** Mongoose Configuration *******************************/
@@ -26,6 +28,7 @@ app.use(bodyParser.json());
 
 // Agregamos el código de nuestro router (routes/index.js)
 app.use('/v1', require('./routes'));
+app.use('/tasks', require('./routes/tasks'));
 
 // Manejando los errores 404
 app.use(function(req, res, next) {

@@ -16,6 +16,42 @@
 // Usuario.js
 
 // usando plugin de validación para que no se repitan correos ni usernames
+// Usuario.js
+// Usuario.js
+
+const mongoose = require('mongoose');                         //Importando mongoose.
+const uniqueValidator = require("mongoose-unique-validator"); //Importando módulo mongoose-unique-validator, pendiente de instalar.
+
+const UsuarioSchema = new mongoose.Schema({                   //Definiendo el objeto UsuarioSchema con el constructor Schema.
+username: {                                                  //Definiendo cada campo con sus tipo sde datos y validaciones.
+  type: String,
+  unique: true, //este campo no se puede repetir
+  lowercase: true,
+  required: [true, "no puede estar vacío"],
+  match: [/^[a-zA-Z0-9]+$/, "es inválido"],
+  index: true,
+},                                           
+nombre: { type: String, required: true },
+apellido: { type: String, required: true },
+email: {
+  type: String,
+  unique: true, //este campo no se puede repetir
+  lowercase: true,
+  required: [true, "no puede estar vacío"],
+  match: [/\S+@\S+\.\S+/, "es inválido"],
+  index: true,
+},
+ubicacion: String,
+telefono: String,
+bio: String,
+foto: String,
+tipo: { type: String, enum: ['normal', 'anunciante'] },
+hash: String, //este campo se utilizará para la sesión
+salt: String, //este campo se utilizará para la sesión
+},
+{ timestamps: true }
+);
+// usando plugin de validación para que no se repitan correos ni usernames
 UsuarioSchema.plugin(uniqueValidator, { message: "Ya existe" });
 
 UsuarioSchema.methods.crearPassword = function (password) {
@@ -28,6 +64,10 @@ UsuarioSchema.methods.crearPassword = function (password) {
 /**
  * Recibe el password, genera y compara el has con el de la base de datos
  */
+ const crypto = require('crypto');                             //Importando módulo crypto, pendiente de instalar.
+ const jwt = require('jsonwebtoken');                          //Importando módulo jsonwebtoken, pendiente de instalar.
+ const secret = require('../config').secret;  
+ 
 UsuarioSchema.methods.validarPassword = function (password) {
   const hash = crypto
     .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
@@ -78,7 +118,10 @@ UsuarioSchema.methods.publicData = function(){
   };
 };
 
-mongoose.model("Usuario", UsuarioSchema);
+
+
+mongoose.model("Usuario", UsuarioSchema);    //Define el modelo Usuario, utilizando el esquema UsuarioSchema.
+
 
 
 
