@@ -1,34 +1,31 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    cors = require('cors');
+    cors = require('cors'),
+    mongoose = require("mongoose");
+
+    var isProduction = process.env.NODE_ENV === 'production';
+mongoose.connect(
+      "mongodb+srv://alejandro11:alexander1@clusterbedu.k34fe.mongodb.net/ToDoApp"
+)
+.then(()=>{ console.log ("success")})
+.catch(()=>{console.log("Error al conectar a la Base de Datos")})
 
 // Objeto global de la app
 var app = express();
 
-/*********************** Mongoose Configuration *******************************/
-const mongoose = require("mongoose");
-
-mongoose.connect(
-    "mongodb+srv://alejandro11:alexander1@clusterbedu.k34fe.mongodb.net/test"
-).then(()=> console.log("Base de datos conectada"));
-
-mongoose.set("debug", true);
-
-require("./models/User");
+require('./models/task');
+require('./models/Usuario');
+require('./models/Solicitud');
 require('./config/passport');
-require("./models/Task");
-// Aquí se importarán los modelos Mascota y Solicitud cuando estén listos
-
-/*********************** Mongoose Configuration *******************************/
 
 // configuración de middlewares
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Agregamos el código de nuestro router (routes/index.js)
+// Código del router (carpeta routes)
 app.use('/v1', require('./routes'));
-app.use('/tasks', require('./routes/tasks'));
+app.use('/usuario', require('./routes/usuario'));
 
 // Manejando los errores 404
 app.use(function(req, res, next) {
@@ -41,4 +38,3 @@ app.use(function(req, res, next) {
 var server = app.listen(process.env.PORT || 3000, function(){
   console.log('Escuchando en el puerto ' + server.address().port);
 });
-

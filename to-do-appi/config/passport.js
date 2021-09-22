@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const Usuario = mongoose.model('Usuario');
 
 passport.use(new LocalStrategy({                            //Configurando elementos utilizados para habilitar sesión.
-  usernameField: 'email',
+  usernameField: 'username',
   passwordField: 'password'
-}, function (email, password, done) {
-  Usuario.findOne({ email: email }).then(function (user) {
+}, function (username, password, done) {
+  Usuario.findOne({ usernameField: username }).then(function (user) {
     if (!user || !user.validarPassword(password)) {
       return done(null, false, { errors: { 'email o contraseña': 'equivocado(a)' } });
     }
