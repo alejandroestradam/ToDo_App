@@ -15,7 +15,6 @@ var app = express();
 
 require('./models/task');
 require('./models/Usuario');
-require('./models/Solicitud');
 require('./config/passport');
 
 // configuración de middlewares

@@ -1,12 +1,11 @@
 var router = require('express').Router();
 
 router.get('/', (req, res)=>{
-   res.send('Bienvenido a AdoptaPet API');
+   res.send('Bienvenido a ToDo App API');
 });
 
-router.use('/mascota', require('./mascota'));
+router.use('/task', require('./task'));
 router.use('/usuario', require('./usuario'));
-router.use('/solicitud', require('./solicitud'))
 
 
 module.exports = router;
