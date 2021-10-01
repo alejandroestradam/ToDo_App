@@ -25,25 +25,3 @@
 	  };
 
 	mongoose.model("task", TaskSchema)
-
-/*
-
-class Mascota {
-	constructor (nombre, categoria, fotos, descripcion, ubicacion) {
-		this.nombre = nombre;
-		this.categoria = categoria;
-		this.fotos = fotos;
-		this.descripcion = descripcion;
-		this.ubicacion = ubicacion;
-	}
-
-
-
-	guardar () {
-		// TODO: guardar a la base de datos.
-	}
-}
-
-module.exports = Mascota;
-
-*/
