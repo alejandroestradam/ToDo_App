@@ -16,8 +16,9 @@
     <nav class="navbar">
         <h4>To Do</h4>
         <div class="search">
-            <input type="text" placeholder="Search">
-            <button id="search-button"><img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-search-logistic-delivery-kiranshastry-gradient-kiranshastry.png"/></button>
+            <button class="button-nav" id="return-button"><img src="https://img.icons8.com/emoji/48/000000/cross-mark-emoji.png"/></button>
+            <input type="text" id="search-input" placeholder="Search">
+            <button class="button-nav" id="search-button"><img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-search-logistic-delivery-kiranshastry-gradient-kiranshastry.png"/></button>
         </div>
         <figure class="icon">
             <a href=""><img src="https://img.icons8.com/ios/50/000000/login-rounded-right--v1.png" alt="Login"/></a>
@@ -26,14 +27,14 @@
     </nav>
     <header class="header">
         <h1>Tasks</h1>
-        <select class="select">
+        <select class="select" id="selector">
             <option selected>Order</option>
             <option value="1">Completed Tasks</option>
             <option value="2">Uncompleted Tasks</option>
             <option value="3">All</option>
           </select>
     </header>
-    <section class=Tasks>
+    <section class=Tasks id="Tasks">
         <div class="new-task linea">
         <button id="Add-task">+</button>
         <input type="text" placeholder="   Add new task" id="Task-input">
